@@ -1,0 +1,10 @@
+require 'pry'
+require 'open-uri'
+require 'net/http'
+require 'json'
+require 'rails'
+
+
+require_relative '../lib/api.rb'
+
+API.new
