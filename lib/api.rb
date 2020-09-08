@@ -8,17 +8,19 @@ puts "New API"
         @json_response = {}
     end
 
-
+    url = "https://www.balldontlie.io/api/v1/players"
+    uri = URI.parse(url)
+    response = Net::HTTP.get_response(uri)
+    response.body
+    JSON.parse(response.body)
     
-        url = URI("https://www.balldontlie.io/api/v1/players")
-
-        http = Net::HTTP.new(url)
+        # url = URI("https://www.balldontlie.io/api/v1/players")
         # http.use_ssl = true
         # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        binding.pry
         
         request = Net::HTTP::Get.new(url)
         response = http.request(request) #response provided by API documentation
-        binding.pry
 
         # @json_body = JSON.parse(response.body) #returns a large output of nba league info
 
