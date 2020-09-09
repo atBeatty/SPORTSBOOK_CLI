@@ -6,9 +6,10 @@ require 'json'
 
 
 require_relative '../lib/cli.rb'
-API.get
-
-
+# CLI.run
+# CLI.list_players
+CLI.generate_random_guard
+# CLI.list_players
 
 # CLI.run
 # CLI.list_teams

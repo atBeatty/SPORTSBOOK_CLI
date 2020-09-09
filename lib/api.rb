@@ -5,22 +5,15 @@ class API
    
     def self.get(data_cat=nil)
     # players or games or teams
-        url = "https://www.balldontlie.io/api/v1/?seasons[]=2019"
+        url = "https://www.balldontlie.io/api/v1/#{data_cat}"
+        # ("players?page=#{page}&seasons[]=2019")
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         response.body
         json_response = JSON.parse(response.body) #data hash
-        binding.pry
+        
     end
 
-    def self.get_stats
-        url = "https://www.balldontlie.io/api/v1/season_averages"
-        uri = URI.parse(url)
-        response = Net::HTTP.get_response(uri)
-        response.body
-        json_response = JSON.parse(response.body) #data hash
-        binding.pry
-    end
 
 
     
