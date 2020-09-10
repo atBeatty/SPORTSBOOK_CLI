@@ -44,9 +44,13 @@ class CLI
 
     def self.list_stats(ids)
         
-        binding.pry
-        API.get_stats_for_roster_by_ids(ids.join("&player_ids[]="))
-        binding.pry
+        stats_hash = API.get_stats_for_roster_by_ids(ids.join("&player_ids[]="))
+
+        stats_hash.each do |player|
+
+            puts "Player has #{player["pts"]} points for the game"
+        end
+
         
 
     end

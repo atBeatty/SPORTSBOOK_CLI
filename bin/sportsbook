@@ -9,18 +9,28 @@ require_relative '../lib/cli.rb'
 
 CLI.run
 
-puts "TEAM 1\n"
+puts "TEAM 1\n\n"
 team1 = CLI.create_roster
-puts "TEAM 2\n"
+puts "TEAM 2\n\n"
 team2 = CLI.create_roster
 
 puts "Would you like to play with TEAM 1 or TEAM 2?\n\n"
 puts "1/2?"
 
 input = gets.chomp
+if input != "1" || "2"
+    input = gets.chomp
+elsif input == "1"
+    chosen_roster = team1
+else
+    chosen_roster = team2
+end
+
+
 
 #opponents team
-puts "Tonight's matchup."
+puts "Tonight's matchup.\n\n"
+
 team_opp = CLI.create_roster
 
 #first half statistics
@@ -29,22 +39,6 @@ team_opp = CLI.create_roster
 CLI.list_stats(team1)
 
 
-
-
-
-# CLI.list_names(team_1)
-# puts "******************** VS ********************"
-# CLI.list_names(team_2)
-# binding.pry
-
-# puts player_team
-
-
-
-
-# Roster.new
-
-# CLI.generate_random_team
 
 
 
