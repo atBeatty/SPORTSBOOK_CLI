@@ -3,20 +3,18 @@ require 'open-uri'
 require 'net/http'
 require 'json'
 
-
-
+require_relative '../lib/api.rb'
 require_relative '../lib/cli.rb'
-# CLI.run
-# CLI.list_players
-CLI.generate_random_guard
-# CLI.list_players
-
-# CLI.run
-# CLI.list_teams
-# input = gets.chomp
-# CLI.players_on_team(input)
 
 
+team_a = Roster.new
+CLI.list_team(team_a.team)
+
+
+
+# Roster.new
+
+# CLI.generate_random_team
 
 
 
