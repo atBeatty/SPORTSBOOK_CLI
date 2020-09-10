@@ -6,10 +6,10 @@ require 'json'
 require_relative '../lib/api.rb'
 require_relative '../lib/cli.rb'
 
-
+puts "\n\n"
 CLI.run
 
-puts "TEAM 1\n\n"
+puts "\nTEAM 1\n\n"
 team1 = CLI.create_roster
 puts "\nTEAM 2\n\n"
 team2 = CLI.create_roster

@@ -43,12 +43,20 @@ class CLI
     end
 
     def self.list_stats(ids)
+        binding.pry
         stats_hash = API.get_stats_for_roster_by_ids(ids.collect {|id| id["id"]}.join("&player_ids[]="))
+        
+            stats_hash.each do |player|
+                profile_hash = ids.select{|id| id["id"] == player["player_id"]}
 
-        stats_hash.each do |player|
+                puts "\n#{profile_hash[0]["first_name"]} #{profile_hash[0]["last_name"]}"
+                puts "#{player["ast"]} ASSITS"
+                puts "#{player["pts"]} POINTS\n\n\n"
 
-            puts "#{player["first_name"]} has #{player["pts"]} points for the game"
-        end
+            end
+            
+            # binding.pry
+
 
         
 
