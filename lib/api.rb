@@ -18,7 +18,7 @@ class API
     def self.get_team
 
         # url = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=1&player_ids[]=2"
-        url = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}"
+        url = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=#{rand(1000)}&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}&player_ids[]=#{rand(500)}"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         response.body
@@ -28,6 +28,7 @@ class API
     end
 
     def self.get_stats_for_roster_by_ids(ids)
+        # binding.pry
         url = "https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=#{ids}"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)

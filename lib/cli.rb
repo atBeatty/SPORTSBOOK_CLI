@@ -39,16 +39,15 @@ class CLI
         roster.each.with_index(1) do |player, index|
             puts "#{index}. #{player["first_name"]} #{player["last_name"]} #{player["position"]}"
         end
-        roster.collect {|player| player["id"]}
+        roster
     end
 
     def self.list_stats(ids)
-        
-        stats_hash = API.get_stats_for_roster_by_ids(ids.join("&player_ids[]="))
+        stats_hash = API.get_stats_for_roster_by_ids(ids.collect {|id| id["id"]}.join("&player_ids[]="))
 
         stats_hash.each do |player|
 
-            puts "Player has #{player["pts"]} points for the game"
+            puts "#{player["first_name"]} has #{player["pts"]} points for the game"
         end
 
         
