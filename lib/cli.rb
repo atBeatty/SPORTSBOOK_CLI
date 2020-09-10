@@ -4,20 +4,17 @@ class CLI
 
 
     def self.run
-        puts "Welcome to Basketball Matchups"
-        puts "Who is your team?"
+        puts "Welcome to Basketball Matchups 2018"
+        puts "This program will generate two teams for the user to select."
     end
 
-    def self.list_team
-    #    new_api_call = API.get_player
-       player_hashes = []
-        5.times do 
-            player_hashes << API.get_player
-        end
-        
+   
+    
+    def self.list_names(team_hash)
         names = []
-        player_hashes.each do |player|
-            names <<  player["first_name"] + " " + player["last_name"]
+        team_hash.each do |player|
+            names <<  player["first_name"] + " " + player["last_name"] + " " + player["position"]
+            # binding.pry
         end
 
         names.each.with_index(1) do |name, index|
@@ -26,25 +23,41 @@ class CLI
 
     end
 
-    def self.list_statistics_for_player_id(id)
+    def self.create_roster
+        player_ids = []
 
+        team_roster = API.get_team
+        team_roster.each do |player|
+            player_ids << player["player_id"]
+        end
+
+        roster = []
+        player_ids.each do |id|
+            roster_member = API.get_player_by_id(id)
+            roster << roster_member
+        end
+        roster.each.with_index(1) do |player, index|
+            puts "#{index}. #{player["first_name"]} #{player["last_name"]} #{player["position"]}"
+        end
     end
 
-
-
-
+    def self.list_stats(team_roster)
+        
+    end
 
 
 end
 
 
 
-# def self.list_teams
-#     teams = API.get("teams")
-#     teams["data"].collect do |id|
-#         puts id["abbreviation"]
+# def self.get_team
+#     #    new_api_call = API.get_player
+#        player_hashes = []
+#         10.times do 
+#             player_hashes << API.get_player
+#         end
+#         player_hashes
 #     end
-# end
 
 
 # def self.players_on_team(team_name)
