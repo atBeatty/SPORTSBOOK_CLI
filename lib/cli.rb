@@ -1,6 +1,4 @@
-require 'pry'
 require_relative './api.rb'
-require_relative './roster.rb'
 
 class CLI
 
@@ -8,18 +6,34 @@ class CLI
     def self.run
         puts "Welcome to Basketball Matchups"
         puts "Who is your team?"
-        # input = gets.chomp
-        # onboarding...
     end
 
-    def self.list_team(team)
-
-        team.each do |id|
-           binding.pry
+    def self.list_team
+    #    new_api_call = API.get_player
+       player_hashes = []
+        5.times do 
+            player_hashes << API.get_player
+        end
+        
+        names = []
+        player_hashes.each do |player|
+            names <<  player["first_name"] + " " + player["last_name"]
         end
 
-       
+        names.each.with_index(1) do |name, index|
+            puts "#{index}. #{name}"
+        end
+
     end
+
+    def self.list_statistics_for_player_id(id)
+
+    end
+
+
+
+
+
 
 end
 

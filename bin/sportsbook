@@ -7,8 +7,14 @@ require_relative '../lib/api.rb'
 require_relative '../lib/cli.rb'
 
 
-team_a = Roster.new
-CLI.list_team(team_a.team)
+CLI.run
+
+CLI.list_team
+puts "******************** VS ********************"
+CLI.list_team
+
+# puts player_team
+
 
 
 
