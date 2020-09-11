@@ -38,7 +38,19 @@ team_opp = CLI.create_roster
 puts "\n\nTIP OFF!!!"
 
 
+# CLI.list_stats(chosen_roster)
+CLI.list_total(chosen_roster)
+CLI.list_total(team_opp)
+
+
+puts "\n\nGAME STATISTICS"
+
+puts "For the User's Team"
 CLI.list_stats(chosen_roster)
+puts "For the Opponent's Team"
+CLI.list_stats(team_opp)
+
+
 
 
 

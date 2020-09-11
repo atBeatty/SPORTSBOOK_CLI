@@ -43,57 +43,23 @@ class CLI
     end
 
     def self.list_stats(ids)
-        binding.pry
         stats_hash = API.get_stats_for_roster_by_ids(ids.collect {|id| id["id"]}.join("&player_ids[]="))
-        
             stats_hash.each do |player|
                 profile_hash = ids.select{|id| id["id"] == player["player_id"]}
-
-                puts "\n#{profile_hash[0]["first_name"]} #{profile_hash[0]["last_name"]}"
                 puts "#{player["ast"]} ASSITS"
                 puts "#{player["pts"]} POINTS\n\n\n"
-
             end
-            
-            # binding.pry
-
-
-        
-
     end
-
+    
+    def self.list_total(ids)
+        team_score = 0
+        stats_hash = API.get_stats_for_roster_by_ids(ids.collect {|id| id["id"]}.join("&player_ids[]="))
+            stats_hash.each do |player|
+                team_score += player["pts"]
+            end
+        puts team_score
+    end
 
    
 
 end
-
-
-
-# def self.get_team
-#     #    new_api_call = API.get_player
-#        player_hashes = []
-#         10.times do 
-#             player_hashes << API.get_player
-#         end
-#         player_hashes
-#     end
-
-
-# def self.players_on_team(team_name)
-#     #?seasons[]=2018&team_ids[]=1
-#     roster = []
-#     page = 0
-#     players = API.get("players")
-#     # meta_data_pages = players["meta"]["total_pages"] # returns number of pages of info
-#     while page < 25 do
-#         players = API.get("players?page=#{page}")
-        
-#         players["data"].each do |player|
-#             if player["team"]["abbreviation"] == team_name
-#                 roster << "#{player["first_name"]} #{player["last_name"]}"
-#             end
-#         end
-#     page +=1
-#     end
-# puts roster
-# end

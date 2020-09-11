@@ -36,6 +36,7 @@ class API
         json_response = JSON.parse(response.body) #data hash
 
         return json_response["data"] #THIS DIDNT WORK WITHOUT THE RETURN
+
     end
 
     
